@@ -11,11 +11,8 @@ die_2 = Die(6)
 results = [die_1.roll() * die_2.roll() for _ in range(100_000)]
 
 # Analyze the results.
-frequencies = []
 max_result = die_1.num_sides * die_2.num_sides
-for value in range(1, max_result+1):
-    frequency = results.count(value)
-    frequencies.append(frequency)
+frequencies = [results.count(value) for value in range(1, max_result+1)]
 
 # Visualize the results.    
 x_values = list(range(1, max_result+1))
