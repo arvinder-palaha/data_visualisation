@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 input_values = [x+1 for x in range(5)]
 squares = [x*x for x in input_values]
 
+print(plt.style.available)
+plt.style.use('seaborn-v0_8-paper')
 fig, ax = plt.subplots()
 ax.plot(input_values,squares, linewidth=3)
 
