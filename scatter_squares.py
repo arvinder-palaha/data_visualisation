@@ -5,7 +5,7 @@ y_values = [x*x for x in x_values]
 
 plt.style.use('seaborn-v0_8-whitegrid')
 fig, ax = plt.subplots()
-ax.scatter(x_values,y_values, s=10)
+ax.scatter(x_values,y_values, s=10, c='red')
 
 # set chart title and label axes.
 ax.set_title("Square Numbers", fontsize=24)
