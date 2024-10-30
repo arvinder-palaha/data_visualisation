@@ -27,6 +27,8 @@ plt.style.use('seaborn-v0_8-darkgrid')
 fig, ax = plt.subplots()
 ax.plot(dates,highs, c='red', alpha=0.5)
 ax.plot(dates,lows, c='blue', alpha=0.5)
+# shading between the high and low temperatures. This is a patch between the two lines.
+ax.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
 
 # format plot.
 ax.set_title("Daily high and low temperatures, 2018", fontsize=24)
