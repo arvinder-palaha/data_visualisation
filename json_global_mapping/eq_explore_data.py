@@ -12,14 +12,16 @@ with open(filename) as f:
 #     json.dump(all_eq_data, f, indent=4)
 
 all_eq_data = all_eq_data['features']
-mags, lons, lats = [], [], []
+mags, lons, lats, hover_texts = [], [], [], []
 for eq_dict in all_eq_data:
     mag = eq_dict['properties']['mag']
     lon = eq_dict['geometry']['coordinates'][0]
     lat = eq_dict['geometry']['coordinates'][1]
+    title = eq_dict['properties']['title']
     mags.append(mag)
     lons.append(lon)
     lats.append(lat)
+    hover_texts.append(title)
 
 print(mags[:10])
 print(lons[:10])
@@ -36,7 +38,8 @@ data = [{
         'colorscale': 'Viridis',
         'reversescale': True,
         'colorbar': {'title': 'Magnitude'},
-    }
+    },
+    'text': hover_texts,
 }]
 my_layout = Layout(title='Global Earthquakes')
 
