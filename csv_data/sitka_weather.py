@@ -22,4 +22,16 @@ with open(filename) as f:
             dates.append(current_date)
             precipitation.append(prcp)
 
-print(precipitation)
+# plot the precipitation.
+plt.style.use('seaborn-v0_8-darkgrid')
+fig, ax = plt.subplots()
+ax.bar(dates, precipitation, width=1, alpha=0.5, color='blue')
+
+# format plot.
+ax.set_title("Daily precipitation - 2018", fontsize=24)
+ax.set_xlabel('', fontsize=16)
+fig.autofmt_xdate()
+ax.set_ylabel("Precipitation (in)", fontsize=16)
+ax.tick_params(axis='both', which='major', labelsize=16)
+
+plt.show()
