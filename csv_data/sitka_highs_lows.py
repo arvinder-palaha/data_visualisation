@@ -12,10 +12,12 @@ with open(filename) as f:
         print(index, column_header)
 
     # Get dates and high temperatures from this file.
-    dates, highs = [], []
+    dates, highs, lows = [], [], []
     for row in reader:
         high = int(row[5])
         highs.append(high)
+        low = int(row[6])
+        lows.append(low)
         date = datetime.strptime(row[2], '%Y-%m-%d')
         dates.append(date)
 
@@ -23,10 +25,11 @@ with open(filename) as f:
 print(plt.style.available)
 plt.style.use('seaborn-v0_8-darkgrid')
 fig, ax = plt.subplots()
-ax.plot(dates,highs, c='red')
+ax.plot(dates,highs, c='red', alpha=0.5)
+ax.plot(dates,lows, c='blue', alpha=0.5)
 
 # format plot.
-ax.set_title("Daily high temperatures, 2018", fontsize=24)
+ax.set_title("Daily high and low temperatures, 2018", fontsize=24)
 ax.set_xlabel('', fontsize=16)
 fig.autofmt_xdate() # automatically adjust the position of the date labels to avoid overlap
 ax.set_ylabel("Temperature (F)", fontsize=16)
