@@ -11,6 +11,7 @@ with open(filename) as f:
 # with open(readable_file, 'w') as f:
 #     json.dump(all_eq_data, f, indent=4)
 
+title = all_eq_data['metadata']['title']
 all_eq_data = all_eq_data['features']
 mags, lons, lats, hover_texts = [], [], [], []
 for eq_dict in all_eq_data:
@@ -37,7 +38,7 @@ data = [{
     },
     'text': hover_texts,
 }]
-my_layout = Layout(title='Global Earthquakes')
+my_layout = Layout(title=title)
 
 fig = {'data': data, 'layout': my_layout}
 offline.plot(fig, filename='global_earthquakes.html')
