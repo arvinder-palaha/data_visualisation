@@ -36,5 +36,6 @@ ax.set_xlabel('', fontsize=16)
 fig.autofmt_xdate() # automatically adjust the position of the date labels to avoid overlap
 ax.set_ylabel("Temperature (F)", fontsize=16)
 ax.tick_params(axis='both', which='major', labelsize=16)
+ax.set_ylim([20, 140])
 
 plt.show()
