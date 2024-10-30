@@ -8,4 +8,13 @@ with open(filename) as f:
 #     json.dump(all_eq_data, f, indent=4)
 
 all_eq_data = all_eq_data['features']
-print(len(all_eq_data))
+mags, lons, lats = [], [], []
+for eq_dict in all_eq_data:
+    mag = eq_dict['properties']['mag']
+    lon = eq_dict['geometry']['coordinates'][0]
+    lat = eq_dict['geometry']['coordinates'][1]
+    mags.append(mag)
+    lons.append(lon)
+    lats.append(lat)
+
+print(mags[:10])
