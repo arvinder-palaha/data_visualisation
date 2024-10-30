@@ -1,6 +1,6 @@
 import csv
 from datetime import datetime
-
+import matplotlib.pyplot as plt
 filename = 'data/death_valley_2018_simple.csv'
 
 with open(filename) as f:
@@ -24,4 +24,18 @@ with open(filename) as f:
             highs.append(high)
             lows.append(low)
 
-print(highs)
+# plot the high and low temperatures.
+plt.style.use('seaborn-v0_8-darkgrid')
+fig, ax = plt.subplots()
+ax.plot(dates, highs, c='red', alpha=0.5)
+ax.plot(dates, lows, c='blue', alpha=0.5)
+ax.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
+
+# format plot.
+ax.set_title("Daily high and low temperatures - 2018", fontsize=24)
+ax.set_xlabel('', fontsize=16)
+fig.autofmt_xdate() # avoids overlapping date labels
+ax.set_ylabel("Temperature (F)", fontsize=16)
+ax.tick_params(axis='both', which='major', labelsize=16)
+
+plt.show()
